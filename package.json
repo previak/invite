@@ -3,13 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://previak.github.io/invite",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.app.json && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "predeploy": "npm run build",
+    "build": "vite build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
