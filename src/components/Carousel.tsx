@@ -9,6 +9,7 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ images, autoPlay = true, interval = 4000 }) => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [errors, setErrors] = useState<Set<number>>(new Set());
 
   const goTo = useCallback((index: number) => {
     if (isTransitioning) return;
@@ -31,7 +32,14 @@ const Carousel: React.FC<CarouselProps> = ({ images, autoPlay = true, interval =
     return () => clearInterval(timer);
   }, [autoPlay, interval, next, images.length]);
 
-  if (images.length === 0) {
+  const handleError = (index: number) => {
+    setErrors((prev) => new Set(prev).add(index));
+  };
+
+  const validImages = images.filter((_, i) => !errors.has(i));
+  const validIndices = images.map((_, i) => i).filter((i) => !errors.has(i));
+
+  if (validImages.length === 0) {
     return (
       <div className="carousel-container bg-pink-50 flex items-center justify-center" style={{ height: '280px' }}>
         <div className="text-center text-pink-300">
@@ -46,24 +54,27 @@ const Carousel: React.FC<CarouselProps> = ({ images, autoPlay = true, interval =
     );
   }
 
+  const adjustedCurrent = validIndices.indexOf(current) === -1 ? 0 : validIndices.indexOf(current);
+
   return (
     <div className="carousel-container relative shadow-lg" style={{ height: '280px' }}>
       <div
         className="carousel-track h-full"
-        style={{ transform: `translateX(-${current * 100}%)` }}
+        style={{ transform: `translateX(-${adjustedCurrent * 100}%)` }}
       >
-        {images.map((src, i) => (
-          <div key={i} className="carousel-slide h-full">
+        {validImages.map((src, i) => (
+          <div key={validIndices[i]} className="carousel-slide h-full">
             <img
               src={src}
-              alt={`Фото ${i + 1}`}
+              alt={`Фото ${validIndices[i] + 1}`}
               className="w-full h-full object-cover"
+              onError={() => handleError(validIndices[i])}
             />
           </div>
         ))}
       </div>
 
-      {images.length > 1 && (
+      {validImages.length > 1 && (
         <>
           <button
             onClick={prev}
@@ -83,11 +94,11 @@ const Carousel: React.FC<CarouselProps> = ({ images, autoPlay = true, interval =
           </button>
 
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((_, i) => (
+            {validImages.map((_, i) => (
               <div
                 key={i}
-                className={`carousel-dot ${i === current ? 'active' : ''}`}
-                onClick={() => goTo(i)}
+                className={`carousel-dot ${i === adjustedCurrent ? 'active' : ''}`}
+                onClick={() => setCurrent(validIndices[i])}
               />
             ))}
           </div>

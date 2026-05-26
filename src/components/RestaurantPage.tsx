@@ -2,11 +2,10 @@ import React from 'react';
 import { HelloKittyFace, Bow, Sparkles } from './HelloKittyDecorations';
 import Carousel from './Carousel';
 
-const PLACEHOLDER_IMAGES = [
-  './src/photos/photo1.jpg',
-  './src/photos/photo2.jpg',
-  './src/photos/photo3.jpg',
-  './src/photos/photo4.jpg',
+const RESTAURANT_IMAGES = [
+  './photos/1.svg',
+  './photos/2.svg',
+  './photos/3.svg',
 ];
 
 interface RestaurantPageProps {
@@ -40,7 +39,7 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({ onNext }) => (
       </div>
 
       <div className="mb-6">
-        <Carousel images={PLACEHOLDER_IMAGES} autoPlay interval={3500} />
+        <Carousel images={RESTAURANT_IMAGES} autoPlay interval={3500} />
       </div>
 
       <p className="text-sm text-pink-300 italic">
