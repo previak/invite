@@ -22,7 +22,7 @@ const InvitationPage: React.FC<InvitationPageProps> = ({ onNext }) => (
 
       <div className="my-6 p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-md border border-pink-100">
         <p className="text-base sm:text-lg text-rose-400 leading-relaxed">
-          В хайповом ресторанчике, чтобы покушать ролчики, попить коктейли, поесть моти или еще какие-нибудь интересные блюда
+          В хайповый ресторанчик, чтобы покушать ролчики, попить коктейли, поесть моти или еще какие-нибудь интересные блюда
         </p>
       </div>
 

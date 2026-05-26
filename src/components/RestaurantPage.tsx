@@ -3,9 +3,10 @@ import { HelloKittyFace, Bow, Sparkles } from './HelloKittyDecorations';
 import Carousel from './Carousel';
 
 const PLACEHOLDER_IMAGES = [
-  './photos/1.jpg',
-  './photos/2.jpg',
-  './photos/3.jpg',
+  './photos/photo1.jpg',
+  './photos/photo2.jpg',
+  './photos/photo3.jpg',
+  './photos/photo4.jpg',
 ];
 
 interface RestaurantPageProps {

@@ -20,7 +20,7 @@ const DressCodePage: React.FC<DressCodePageProps> = ({ onNext }) => (
         </p>
         <div className="my-3 text-2xl">&#10024;&#128133;&#10024;</div>
         <p className="text-base sm:text-lg text-rose-400 leading-relaxed">
-          Но погода видимо этого хочет (максимум 21 градус), поэтому если у тебя нет курточки под нее, то надевай что хочешь
+          Но погода видимо этого не хочет (максимум 21 градус), поэтому если у тебя нет курточки под нее, то надевай что хочешь
         </p>
       </div>
 
