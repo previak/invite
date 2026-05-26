@@ -2,11 +2,12 @@ import React from 'react';
 import { HelloKittyFace, Bow, Sparkles } from './HelloKittyDecorations';
 import Carousel from './Carousel';
 
-const RESTAURANT_IMAGES = [
-  './photos/1.svg',
-  './photos/2.svg',
-  './photos/3.svg',
-];
+import photo1 from '../photos/photo1.jpg';
+import photo2 from '../photos/photo2.jpg';
+import photo3 from '../photos/photo3.jpg';
+import photo4 from '../photos/photo4.jpg';
+
+const RESTAURANT_IMAGES = [photo1, photo2, photo3, photo4];
 
 interface RestaurantPageProps {
   onNext: () => void;
